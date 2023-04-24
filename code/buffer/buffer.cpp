@@ -101,7 +101,7 @@ ssize_t Buffer::ReadFd(int fd, int* saveErrno) {
     iov[1].iov_len = sizeof(buff);
 // iov:iovec结构体数组的地址值(多个缓冲区数据整合一并发送)
 // iovcnt:第二个参数iov数组的长度
-    const ssize_t len = readv(fd, iov, 2); //使用合并的两个缓存区接受数据
+    const ssize_t len = readv(fd, iov, 2);          //使用合并的两个缓存区接受数据
     if(len < 0) {                                   //接收失败
         *saveErrno = errno;
     }

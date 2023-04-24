@@ -14,7 +14,7 @@ const unordered_map<string, int> HttpRequest::DEFAULT_HTML_TAG {
             {"/register.html", 0}, {"/login.html", 1},  };
 
 void HttpRequest::Init() {
-    method_ = path_ = version_ = body_ = "";
+    method_ = path_ = version_ = body_ = "";  
     state_ = REQUEST_LINE;
     header_.clear();
     post_.clear();
@@ -28,11 +28,11 @@ bool HttpRequest::IsKeepAlive() const {
 }
 
 bool HttpRequest::parse(Buffer& buff) {
-    const char CRLF[] = "\r\n";
+    const char CRLF[] = "\r\n";     //定义结束标志
     if(buff.ReadableBytes() <= 0) {
         return false;
     }
-    while(buff.ReadableBytes() && state_ != FINISH) {
+    while(buff.ReadableBytes() && state_ != FINISH) { //如果对象阶段不是结束的话继续 并且有可读内容
         const char* lineEnd = search(buff.Peek(), buff.BeginWriteConst(), CRLF, CRLF + 2);
         std::string line(buff.Peek(), lineEnd);
         switch(state_)

@@ -170,7 +170,7 @@ void WebServer::OnRead_(HttpConn* client) {
     assert(client);
     int ret = -1;
     int readErrno = 0;
-    ret = client->read(&readErrno);  //从套结字接收消息到自己的缓存区
+    ret = client->read(&readErrno);  //从套结字接收消息到自己的读缓存区
     if(ret <= 0 && readErrno != EAGAIN) {
         CloseConn_(client);
         return;

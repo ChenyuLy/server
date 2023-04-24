@@ -94,7 +94,7 @@ ssize_t HttpConn::write(int* saveErrno) {
     return len;
 }
 
-bool HttpConn::process() {
+bool HttpConn::process() {      //读缓存读取到数据了
     request_.Init(); //初始化请求对象 处理请求
     if(readBuff_.ReadableBytes() <= 0) {
         return false;
