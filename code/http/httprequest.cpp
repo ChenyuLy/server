@@ -27,14 +27,16 @@ bool HttpRequest::IsKeepAlive() const {
     return false;
 }
 
-bool HttpRequest::parse(Buffer& buff) {
+bool HttpRequest::parse(Buffer& buff) {     //读读缓存中的一行往后挪
     const char CRLF[] = "\r\n";     //定义结束标志
     if(buff.ReadableBytes() <= 0) {
         return false;
     }
     while(buff.ReadableBytes() && state_ != FINISH) { //如果对象阶段不是结束的话继续 并且有可读内容
-        const char* lineEnd = search(buff.Peek(), buff.BeginWriteConst(), CRLF, CRLF + 2);
-        std::string line(buff.Peek(), lineEnd);
+        //查找结束标志的 开头迭代器 一行的结束位置
+        const char* lineEnd = search(buff.Peek(), buff.BeginWriteConst(), CRLF, CRLF + 2);   //使用STL中的search函数，判断一个序列是否是另一个序列的子序列。
+        
+        std::string line(buff.Peek(), lineEnd);//把内存中的一行代码读取到line
         switch(state_)
         {
         case REQUEST_LINE:

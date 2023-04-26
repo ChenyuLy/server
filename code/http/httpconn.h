@@ -60,7 +60,7 @@ private:
     bool isClose_;
     
     int iovCnt_;
-    struct iovec iov_[2];
+    struct iovec iov_[2]; //用于标记发送缓存
     
     Buffer readBuff_; // 读缓冲
     Buffer writeBuff_; // 写缓冲

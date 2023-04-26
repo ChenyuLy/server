@@ -18,7 +18,7 @@ size_t Buffer::PrependableBytes() const {
     return readPos_;
 }
 
-const char* Buffer::Peek() const {
+const char* Buffer::Peek() const { //read位置的迭代器
     return BeginPtr_() + readPos_;
 }
 
@@ -44,7 +44,7 @@ std::string Buffer::RetrieveAllToStr() {
     return str;
 }
 
-const char* Buffer::BeginWriteConst() const {
+const char* Buffer::BeginWriteConst() const { ///写位置的迭代器
     return BeginPtr_() + writePos_;
 }
 

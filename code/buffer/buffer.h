@@ -27,7 +27,7 @@ public:
     void HasWritten(size_t len);                //写入数据以后更新 已写位置的值
 
     void Retrieve(size_t len);                  //用len 根新已读位置的值
-    void RetrieveUntil(const char* end);        
+    void RetrieveUntil(const char* end);        //把read挪到开头
 
     void RetrieveAll() ;                        //重置buff
     std::string RetrieveAllToStr();             //返回 读位置到写位置中部分字符串并且重置buff

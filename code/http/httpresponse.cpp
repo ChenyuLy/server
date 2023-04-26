@@ -76,7 +76,7 @@ void HttpResponse::MakeResponse(Buffer& buff) {
     else if(code_ == -1) { 
         code_ = 200; 
     }
-    ErrorHtml_();
+    ErrorHtml_();           
     AddStateLine_(buff);
     AddHeader_(buff);
     AddContent_(buff);

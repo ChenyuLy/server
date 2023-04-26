@@ -106,7 +106,7 @@ bool HttpConn::process() {      //读缓存读取到数据了
         response_.Init(srcDir, request_.path(), false, 400);                    //解析失败
     }
 
-    response_.MakeResponse(writeBuff_);
+    response_.MakeResponse(writeBuff_);     //往写缓存中添加回应包
     /* 响应头 */
     iov_[0].iov_base = const_cast<char*>(writeBuff_.Peek());
     iov_[0].iov_len = writeBuff_.ReadableBytes();
